@@ -1,9 +1,15 @@
 package com.ems.backend.Service;
 
-import com.ems.backend.Dto.EmployeeDto;
+import java.util.List;
+import java.util.Optional;
+
+
+import com.ems.backend.Entity.Employee;
 
 public interface EmployeeService {
 	
-	EmployeeDto createEmployee(EmployeeDto employeeDto);
+	Employee createEmployee(Employee employee);
+	Optional<Employee> getEmployeeById(Long id);
+	List<Employee> findAllEmployees(Employee employee);
 
 }

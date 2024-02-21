@@ -18,7 +18,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table( name ="employees")
 public class Employee {
 	
 	public Employee(long id2, String firstName2, String lastName2, String email2, String phone2) {
@@ -27,6 +26,17 @@ public class Employee {
 	public long getId() {
 		return id;
 	}
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Employee(String firstName, String lastName, String email, String phone) {
+	super();
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.email = email;
+	this.phone = phone;
+}
 	public void setId(long id) {
 		this.id = id;
 	}

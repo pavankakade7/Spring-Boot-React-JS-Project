@@ -1,5 +1,9 @@
 package com.ems.backend.Service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ems.backend.Dto.EmployeeDto;
@@ -14,18 +18,28 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 	
-	private EmployeeRepository employeeRepository;
+	@Autowired
+	private  EmployeeRepository employeeRepository;
+	
+
+
 
 	@Override
-	public EmployeeDto createEmployee(EmployeeDto employeeDto) {
+	public Optional<Employee> getEmployeeById(Long id) {
+		
+		return employeeRepository.findById(id);
+	}
+
+	@Override
+	public Employee createEmployee(Employee employee) {
 		// TODO Auto-generated method stub
-		Employee employee = EmployeeMapper.mapToEmployee(employeeDto);
-	
-		Employee savedEmployee	= employeeRepository.save(employee);
-		
-		return EmployeeMapper.mapToEmployeeDto(savedEmployee);
-		
-		
+		return employeeRepository.save(employee);
+	}
+
+	@Override
+	public List<Employee> findAllEmployees(Employee employee) {
+		// TODO Auto-generated method stub
+		return employeeRepository.findAll();
 	}
 
 }
